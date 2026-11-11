@@ -1,0 +1,14 @@
+flowchart LR
+ G[Goal / Ticket] --> REQ[Requirement]
+ REQ --> DEC[Design Decision]
+ DEC --> SRC[Source Change]
+ SRC --> TEST[Test Oracle]
+ TEST --> RUN[Observed Test / CI Result]
+ RUN --> REV[Reviewer Decision]
+ REV --> CP[Notion Checkpoint]
+ SRC --> SHA[Exact Commit SHA]
+ RUN --> SHA
+ AGENT[Agent Session] --> RAW[Raw Transcript]
+ RAW --> MAN[Evidence Manifest]
+ SHA --> MAN
+ CP --> G

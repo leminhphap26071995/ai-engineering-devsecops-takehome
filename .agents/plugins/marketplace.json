@@ -1,0 +1,22 @@
+{
+  "name": "papaya-codex-workflow",
+  "interface": {
+    "displayName": "Papaya Codex Workflow"
+  },
+  "plugins": [
+    {
+      "name": "unified-project-workflow",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/leminhphap-improvement/ai-workflow-archtiecture.git",
+        "path": "./plugin/overlay",
+        "sha": "fd981a03839566875146e9c853b52861db63396d"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

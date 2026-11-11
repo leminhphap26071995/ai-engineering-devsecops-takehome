@@ -1,0 +1,37 @@
+flowchart TB
+ subgraph CONTROL[Human and Project Control]
+  H[Human Owner]
+  N[Notion Project Board and Checkpoint]
+ end
+ subgraph ORCH[AI Orchestration]
+  U[Unified Project Workflow]
+  S[Specialist Skills and Role Methods]
+  C[Context Recovery and Acceptance]
+ end
+ subgraph EXEC[Model and Execution]
+  M[Model and Provider Routing]
+  G[ChatGPT Reasoning]
+  A[Cursor Coding Agent]
+  I[GitHub and Notion Integrations]
+ end
+ subgraph VERIFY[Source and Verification]
+  R[GitHub Repository and Commits]
+  CI[CI and Test Evidence]
+  V[Human and Adversarial Review]
+ end
+ subgraph EVIDENCE[Evidence and Continuity]
+  T[Raw Agent Transcripts]
+  E[Provenance Manifest]
+  CP[Notion Checkpoint]
+ end
+ H --> N --> U --> C --> S
+ S --> M
+ M --> G
+ M --> A
+ U --> I
+ G --> R
+ A --> R
+ I --> R
+ R --> CI --> V --> E
+ A --> T --> E
+ E --> CP

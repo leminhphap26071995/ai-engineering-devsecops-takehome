@@ -1,0 +1,13 @@
+flowchart TD
+ H[Candidate / Human Owner] --> GOAL[Assessment Requirements]
+ GOAL --> DESIGN[Candidate Reference Design]
+ DESIGN --> AGENT[Cursor Agent Session]
+ AGENT --> DRAFT[Challenge Documents and Diagrams]
+ DRAFT --> REVIEW[Human Review and Adversarial Critique]
+ REVIEW --> REPO[Single GitHub Submission Repository]
+ AGENT --> RAW[Complete Native Raw Transcript]
+ RAW --> REPO
+ REPO --> CHECK[Requirement and Secret Checks]
+ CHECK --> ACCEPT[Owner Acceptance]
+ ACCEPT --> SEND[Owner Sends One Repository URL]
+ PAPAYA[Papaya Systems] -. no access / no implementation claim .-> DESIGN
