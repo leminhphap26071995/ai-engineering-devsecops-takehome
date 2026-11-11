@@ -7,56 +7,116 @@
     "version": "0.1.98",
     "path": "plugin/overlay/skills/roles"
   },
-  "local_adaptation": "Four-artifact role bundles are mirrored under .agents/skills so Codex can discover and read them as repository skills. Each SKILL.md instructs Codex to load its sibling mindset.md, knowledge.md and workflow.md. ai-native-tooling-engineer/SKILL.md additionally has Codex skill frontmatter.",
+  "local_adaptation": "Four-artifact role bundles are mirrored under .agents/skills so Codex can discover and read them as repository skills. Each local SKILL.md adds a Codex loading instruction to read sibling mindset.md, knowledge.md and workflow.md. ai-native-tooling-engineer/SKILL.md also adds Codex skill frontmatter because the canonical source SKILL.md has no Agent Skills metadata. All other role artifact bodies are copied from the pinned source.",
   "roles": {
     "software-architect": {
       "skill_dir": ".agents/skills/software-architect",
       "source_skill_blob_sha": "6e1f5ac6a420cd6be19665bafc7e38ed6d8ec767",
       "source_artifacts": [
-        "SKILL.md",
-        "mindset.md",
-        "knowledge.md",
-        "workflow.md"
+        {
+          "name": "SKILL.md",
+          "source_git_blob_sha": "6e1f5ac6a420cd6be19665bafc7e38ed6d8ec767"
+        },
+        {
+          "name": "mindset.md",
+          "source_git_blob_sha": "7da2454b665d72683c3e44e977d99cea77b221d2"
+        },
+        {
+          "name": "knowledge.md",
+          "source_git_blob_sha": "244c964e5a8dfd25aa050ba5d5c165cd87e9c560"
+        },
+        {
+          "name": "workflow.md",
+          "source_git_blob_sha": "709f63a20172583dd84393116e1aa152082df334"
+        }
       ]
     },
     "security-reviewer": {
       "skill_dir": ".agents/skills/role-security-reviewer",
       "source_skill_blob_sha": "5bde25e8f33f075a2c8890bf676ec88cf6fe1e10",
       "source_artifacts": [
-        "SKILL.md",
-        "mindset.md",
-        "knowledge.md",
-        "workflow.md"
+        {
+          "name": "SKILL.md",
+          "source_git_blob_sha": "5bde25e8f33f075a2c8890bf676ec88cf6fe1e10"
+        },
+        {
+          "name": "mindset.md",
+          "source_git_blob_sha": "400cf8d3025aeb1c162429ab86f30370a9bf4c84"
+        },
+        {
+          "name": "knowledge.md",
+          "source_git_blob_sha": "fa83b36d09be58d3ed07aad349ed9f55e916240b"
+        },
+        {
+          "name": "workflow.md",
+          "source_git_blob_sha": "b289570a5a4d737d50df627748d2008a73e44b1a"
+        }
       ]
     },
     "devops-engineer": {
       "skill_dir": ".agents/skills/role-devops-engineer",
       "source_skill_blob_sha": "9423f40661009f7b8a523016170df753e343ddab",
       "source_artifacts": [
-        "SKILL.md",
-        "mindset.md",
-        "knowledge.md",
-        "workflow.md"
+        {
+          "name": "SKILL.md",
+          "source_git_blob_sha": "9423f40661009f7b8a523016170df753e343ddab"
+        },
+        {
+          "name": "mindset.md",
+          "source_git_blob_sha": "bbe1310f48ae7f378e5adc999faa1c0f8c01d91d"
+        },
+        {
+          "name": "knowledge.md",
+          "source_git_blob_sha": "4e0fe7e2c4d7f7f61cbdf6535aae22334cfef938"
+        },
+        {
+          "name": "workflow.md",
+          "source_git_blob_sha": "bf10ed663452fa24e22bbba28b3ddbac28de3df9"
+        }
       ]
     },
     "qa-engineer": {
       "skill_dir": ".agents/skills/role-qa-engineer",
       "source_skill_blob_sha": "f51e340976e820f5cc0a08e961aca421dfdb6e8e",
       "source_artifacts": [
-        "SKILL.md",
-        "mindset.md",
-        "knowledge.md",
-        "workflow.md"
+        {
+          "name": "SKILL.md",
+          "source_git_blob_sha": "f51e340976e820f5cc0a08e961aca421dfdb6e8e"
+        },
+        {
+          "name": "mindset.md",
+          "source_git_blob_sha": "5935e713544925be3801396913900d9b0f812482"
+        },
+        {
+          "name": "knowledge.md",
+          "source_git_blob_sha": "bc02d5e1f9d869bce1ba8a493ae5e3c974536562"
+        },
+        {
+          "name": "workflow.md",
+          "source_git_blob_sha": "8399d45f010867dea68efd6f44f456160e02a1a1"
+        }
       ]
     },
     "ai-native-tooling-engineer": {
       "skill_dir": ".agents/skills/ai-native-tooling-engineer",
       "source_skill_blob_sha": "dd309c5ad81ed2ab95ece52ee55f71e7b254be16",
       "source_artifacts": [
-        "SKILL.md",
-        "mindset.md",
-        "knowledge.md",
-        "workflow.md"
+        {
+          "name": "SKILL.md",
+          "source_git_blob_sha": "dd309c5ad81ed2ab95ece52ee55f71e7b254be16"
+        },
+        {
+          "name": "mindset.md",
+          "source_git_blob_sha": "0718b9ae49aa8d1778e6acc7fcd614c44c4268ed"
+        },
+        {
+          "name": "knowledge.md",
+          "source_git_blob_sha": "9185efe5199c150e9f12c676354bd807af8e1c03"
+        },
+        {
+          "name": "workflow.md",
+          "source_git_blob_sha": "8adde09509a311f458fb22290f5a6ffc7873e39d"
+        }
       ]
     }
   }
