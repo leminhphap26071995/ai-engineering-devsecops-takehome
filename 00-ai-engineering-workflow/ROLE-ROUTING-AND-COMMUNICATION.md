@@ -71,3 +71,34 @@ Language selection is model-specific. auto uses only a VERIFIED benchmark profil
 The current script handles raw request text, not arbitrary source-file parsing or source retrieval. The main agent must inspect authoritative sources. Seven unit tests pass with a mocked helper; live Codex execution and transcript capture remain unverified.
 
 Each prepare/finalize call starts a separate Codex exec session. Its event JSONL is not a native conversation export. Do not use the bridge for Papaya assessment work until the harmless capture probe confirms every helper session can be captured completely and shared safely. Otherwise, keep the main agent in the source language.
+
+
+## Codex-specific role and custom-agent configuration
+
+Codex discovers the project-local role skills from `.agents/skills/` and custom subagents from `.codex/agents/`. The project-scoped defaults are in `.codex/config.toml`. These files are source configuration only; local trust, plugin installation, skill discovery and actual invocation must be verified on the owner's Codex client.
+
+### Five complete role bundles available in this project
+
+The selected four Challenge 1 role bundles are mirrored from UPW v0.1.98 at canonical source commit `7b19d78bd3db8091d5ab5aa827031c60065e49bc`. Each has all four artifacts: `SKILL.md`, `mindset.md`, `knowledge.md`, `workflow.md`. Provenance and source blob IDs are recorded in `.agents/skills/role-pack-provenance.json`.
+
+| Project skill | Responsibility | Codex use |
+|---|---|---|
+| `software-architect` | Accountable primary for Challenge 1 | Main Codex thread; invoke `$software-architect` |
+| `role-security-reviewer` | Threat model, agent/tool trust, IAM, secrets, data and supply chain | Spawn `security_reviewer` when security phase is active |
+| `role-devops-engineer` | GitHub Actions, Pulumi/Serverless, OIDC, deployment, rollback and operations | Spawn `devops_engineer` when delivery phase is active |
+| `role-qa-engineer` | Requirement oracles, positive/negative/boundary/bypass acceptance | Spawn `qa_engineer` during verification |
+| `ai-native-tooling-engineer` | Codex/plugin/skill/custom-agent setup and consumer activation | Conditional setup role; not part of the four Challenge 1 roles |
+
+### Custom-agent boundaries
+
+- Supporting custom agents are read-only and inherit the parent model/provider. No model is pinned because the actual local Free-account availability and chosen model must be recorded from the session.
+- The project config allows up to three concurrent supporting threads. Invoke the AI Native Tooling Engineer separately when setup work is active.
+- The main thread remains accountable and integrates findings; custom agents do not independently approve or submit the assessment.
+- A role bundle is a professional method. A custom-agent definition is an invocation adapter. Only an actually spawned agent counts as a conversation/session and must be captured in the transcript manifest.
+- Do not claim a custom agent or role skill was invoked from the presence of its TOML/Markdown files.
+
+### Exact skill loading
+
+Each project-local `SKILL.md` directs Codex to read its sibling `mindset.md`, `knowledge.md` and `workflow.md`. The parent prompt should explicitly invoke the relevant skill and spawn only the supporting agent needed for the current phase. Do not load all role bundles into every prompt.
+
+Logical Questions do not use engineering roles. Q1 and Q5 remain owner-fact-only; the remaining three answers must be selected after checking the exact source question wording.
