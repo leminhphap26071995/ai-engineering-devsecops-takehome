@@ -68,7 +68,7 @@ This repository pins the reusable Unified Project Workflow (UPW) Codex plugin fr
 - Repo-local marketplace: \`.agents/plugins/marketplace.json\`
 - Installation guide: \`docs/WORKFLOW-PORTABILITY.md\` and \`03-ai-agent-evidence/CODEX-CAPTURE.md\`
 
-Use the Codex-native plugin/skills for goal anchoring, context recovery, professional capability routing, project/ticket isolation, source-first engineering, gates 5–6–7, failure recovery, CI lifecycle and evidence-backed closure. Verify actual plugin installation and skill invocation; repository metadata alone is not proof of activation.
+Use the Codex-native UPW plugin/skills for goal anchoring, context recovery, professional capability routing, project/ticket isolation, source-first engineering, gates 5–6–7, failure recovery, CI lifecycle and evidence-backed closure. The project also vendors the selected complete four-artifact role packs under `.agents/skills/` and Codex custom-agent adapters under `.codex/agents/`. Verify actual plugin installation and skill invocation; repository metadata alone is not proof of activation.
 
 ### Provider neutrality is mandatory
 
@@ -88,3 +88,17 @@ Follow [ROLE-ROUTING-AND-COMMUNICATION.md](00-ai-engineering-workflow/ROLE-ROUTI
 For ordinary interaction, answer directly in the user's language: state root cause when applicable, then solution, then only one relevant trade-off, prevention or future improvement. Trade-off means a material cost or limitation of the chosen option; prevention means a control for recurrence/security/reliability risk; improvement means a concrete future optimization. Omit irrelevant categories. Use natural prose, no unnecessary headings/labels, no inflated or agentic wording, up to five sentences and a 20–30 whitespace-unit target. Never truncate a required fact to meet the limit. Keep technical terms precise and explain unfamiliar ones simply. Full technical artifacts are exempt from the short-answer limit.
 
 Use [CONTEXT-COMPILER-DESIGN.md](00-ai-engineering-workflow/CONTEXT-COMPILER-DESIGN.md) as the current language-bridge contract. The project-local script at scripts/language_bridge.py now implements raw-request normalization, a structured context envelope, an agent outbox and reverse translation. It does not parse arbitrary repository documents or fetch sources; the agent must still inspect authoritative files. Seven unit tests pass with a mocked Codex helper, but live Codex execution, local authentication, helper-session capture and host activation remain NOT_VERIFIED. Do not use the bridge for assessment work until the harmless capture probe proves that every prepare/finalize helper session has a complete, shareable native transcript; otherwise keep the main agent in the source language.
+
+
+## Codex project configuration and specialist roles
+
+- Project-scoped Codex defaults and UPW plugin enablement: `.codex/config.toml`.
+- Custom read-only supporting agents: `.codex/agents/`.
+- Complete project-discoverable role skills: `.agents/skills/`; exact canonical source commit and artifact Git blob SHAs: `.agents/skills/role-pack-provenance.json`.
+- UPW marketplace: `.agents/plugins/marketplace.json`; plugin `unified-project-workflow` v0.1.98 pinned to `ai-workflow-archtiecture@7b19d78bd3db8091d5ab5aa827031c60065e49bc`.
+
+The main Codex thread is the accountable `software-architect` primary. Invoke its project skill `$software-architect` and load its sibling `mindset.md`, `knowledge.md` and `workflow.md`. Spawn the read-only `security_reviewer`, `devops_engineer` and `qa_engineer` custom agents only when their phase is active. `ai_native_tooling_engineer` is conditional for Codex/plugin installation and configuration work. Every spawned session is a separate assessment-relevant conversation and must be inventoried and captured if used.
+
+The project config deliberately does not pin a model, reasoning effort, account, global provider, MCP server or credentials. Record the actual client/version/model/reasoning and host-level settings from the local Codex session. The project defaults request approval on demand and workspace-write for the parent; specialist agents are read-only. These are configuration defaults, not a security boundary or proof that the local host loaded them. Codex only loads project-scoped config after the owner trusts the repository; CLI flags and managed requirements may further affect effective behavior.
+
+For Challenge 1, use only the four engineering roles in the documented phase order. Logical Questions require no engineering role; Q1/Q5 remain owner-fact-only. Do not use the language bridge for assessment content until every helper session has a complete, shareable transcript.
