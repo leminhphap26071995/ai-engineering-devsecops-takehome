@@ -60,6 +60,18 @@ The candidate now has Codex access through a ChatGPT Free account (owner-reporte
 
 ## Portable Codex workflow
 
+## Codex-specific runtime and roles
+
+The repository now includes a Codex project configuration package:
+- Project defaults and UPW plugin enablement: `.codex/config.toml`
+- Read-only supporting custom agents: `.codex/agents/`
+- Five complete, project-discoverable UPW role bundles: `.agents/skills/`
+- Canonical role provenance: `.agents/skills/role-pack-provenance.json`
+- Setup and configuration guide: `.codex/README.md`
+
+The main Codex session uses `software-architect` as primary. Security, DevOps and QA are supporting custom agents invoked only when their phase is active. AI Native Tooling Engineer is conditional for setup work. These are repository-defined capabilities; local Codex trust, plugin installation, skill discovery, agent invocation and transcript capture remain separate verification gates.
+
+
 The repository includes a repo-local Codex marketplace at \`.agents/plugins/marketplace.json\`, which pins UPW v0.1.98 from the canonical AI Workflow Architecture repository at commit \`7b19d78bd3db8091d5ab5aa827031c60065e49bc\`. See [Workflow Portability](docs/WORKFLOW-PORTABILITY.md) and [Codex capture guide](03-ai-agent-evidence/CODEX-CAPTURE.md).
 
 UPW core separates project routing, work management, knowledge base, source control, CI/CD and evidence storage. It does not require Notion + GitHub. Jira + Confluence or other combinations can be configured later through verified adapters. This submission currently uses GitHub as its source-control host; the owner's Notion campaign is not a runtime or submission dependency. Jira/Confluence integrations are not included or verified here.
