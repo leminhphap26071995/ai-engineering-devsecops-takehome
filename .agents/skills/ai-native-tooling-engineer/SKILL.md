@@ -21,3 +21,7 @@ Choose the appropriate integration surface and reject unsupported or unverified 
 
 ## Boundaries
 A manifest import is not execution. A role is not a worker. Never bypass workspace trust, host permission or SecretStorage. Never use general model knowledge as specialist evidence.
+
+## Codex four-artifact loading contract
+
+Before producing specialist work, read the sibling `mindset.md`, `knowledge.md` and `workflow.md` in this same skill directory. Apply all four artifacts together. If any artifact is missing or unreadable, report the role context as incomplete; do not substitute generic knowledge silently. The pinned source and artifact provenance are recorded in `.agents/skills/role-pack-provenance.json`.
