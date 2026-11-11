@@ -1,0 +1,12 @@
+# Project-scoped Codex defaults. Loaded only after the owner trusts this repository.
+# Model/provider are intentionally not pinned: record the actual runtime choice per session.
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+
+[agents]
+enabled = true
+max_concurrent_threads_per_session = 3
+
+# The marketplace source must first be added and the plugin installed in the local Codex host.
+[plugins."unified-project-workflow@papaya-codex-workflow"]
+enabled = true
