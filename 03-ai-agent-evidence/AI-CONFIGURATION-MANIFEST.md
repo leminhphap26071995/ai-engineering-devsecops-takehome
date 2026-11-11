@@ -17,7 +17,7 @@ These are version-controlled project files. Their presence does not prove the lo
 | UPW marketplace | `.agents/plugins/marketplace.json` | SOURCE_VERIFIED |
 | UPW version/source | v0.1.98, `leminhphap-improvement/ai-workflow-archtiecture@7b19d78bd3db8091d5ab5aa827031c60065e49bc`, path `plugin/overlay` | SOURCE_VERIFIED |
 | Custom agents | `security_reviewer`, `devops_engineer`, `qa_engineer`, `ai_native_tooling_engineer` under `.codex/agents/` | SOURCE_VERIFIED — read-only adapters |
-| Project-local role skills | Five complete four-artifact bundles under `.agents/skills/` | SOURCE_VERIFIED |
+| Project-local role skills | Five complete four-artifact bundles under `.agents/skills/` plus the `papaya-takehome` assessment router | SOURCE_VERIFIED |
 | Role provenance | `.agents/skills/role-pack-provenance.json` | SOURCE_VERIFIED |
 | Model/provider | Not pinned | Intentional; record actual local selection |
 | MCP servers | None declared in project config | Does not establish whether user-level/global MCP servers exist |
