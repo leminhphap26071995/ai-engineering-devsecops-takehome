@@ -55,7 +55,7 @@ Verify from the repository root in the local Codex client:
 codex plugin list --json
 ~~~
 
-Then start a new session and inspect available skills/custom agents (for CLI, use `/skills` and `/agents`). The expected project skills are `software-architect`, `role-security-reviewer`, `role-devops-engineer`, `role-qa-engineer` and conditional `ai-native-tooling-engineer`. The expected supporting agents are `security_reviewer`, `devops_engineer`, `qa_engineer` and conditional `ai_native_tooling_engineer`.
+Then start a new session and inspect available skills/custom agents (for CLI, use `/skills` and `/agents`). The expected project skills are `papaya-takehome`, `software-architect`, `role-security-reviewer`, `role-devops-engineer`, `role-qa-engineer` and conditional `ai-native-tooling-engineer`. The expected supporting agents are `security_reviewer`, `devops_engineer`, `qa_engineer` and conditional `ai_native_tooling_engineer`.
 
 Use the main Codex thread as the `software-architect` primary. Spawn only the relevant read-only supporting agent for the active phase. Do not spawn every role just to prove the configuration. Record actual skill invocations and every actual subagent session in the manifests.
 
