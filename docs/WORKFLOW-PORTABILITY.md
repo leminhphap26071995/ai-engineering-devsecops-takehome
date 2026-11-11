@@ -25,6 +25,18 @@ The current table describes this project only. It is not a default stack for UPW
 
 ## Runtime behavior
 
+## Codex project runtime adapter
+
+The submission repository includes a Codex-specific adapter without changing the provider-neutral UPW core:
+
+- `.codex/config.toml` contains trusted-project defaults and local plugin enablement.
+- `.codex/agents/` contains read-only custom-agent adapters for security, DevOps, QA and conditional AI tooling setup.
+- `.agents/skills/` contains project-discoverable role bundles mirrored from the pinned UPW source commit with provenance.
+- The main Codex thread remains the accountable primary; supporting agents are spawned only for active specialist phases.
+
+This is a Codex host adapter, not a new provider authority. It does not connect Notion/Jira/Confluence/GitHub, configure credentials or prove plugin activation. Actual Codex client/version, project trust, plugin installation, skill discovery, agent invocation and session export must be verified on the local host. See [Codex project runtime](../.codex/README.md) and [capture guide](../03-ai-agent-evidence/CODEX-CAPTURE.md).
+
+
 - Codex loads project \`AGENTS.md\` and the installed UPW plugin skills.
 - UPW core resolves authorities by concern through the project map and actual host connectors.
 - No Notion, Jira, Confluence, GitHub Issues or GitLab API is assumed to exist merely because the provider is named in a document.
