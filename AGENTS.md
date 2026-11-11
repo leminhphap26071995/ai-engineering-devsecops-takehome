@@ -95,6 +95,7 @@ Use [CONTEXT-COMPILER-DESIGN.md](00-ai-engineering-workflow/CONTEXT-COMPILER-DES
 - Project-scoped Codex defaults and UPW plugin enablement: `.codex/config.toml`.
 - Custom read-only supporting agents: `.codex/agents/`.
 - Complete project-discoverable role skills: `.agents/skills/`; exact canonical source commit and artifact Git blob SHAs: `.agents/skills/role-pack-provenance.json`.
+- Task-specific assessment workflow: invoke `$papaya-takehome` only after the harmless Codex transcript-capture gate passes.
 - UPW marketplace: `.agents/plugins/marketplace.json`; plugin `unified-project-workflow` v0.1.98 pinned to `ai-workflow-archtiecture@7b19d78bd3db8091d5ab5aa827031c60065e49bc`.
 
 The main Codex thread is the accountable `software-architect` primary. Invoke its project skill `$software-architect` and load its sibling `mindset.md`, `knowledge.md` and `workflow.md`. Spawn the read-only `security_reviewer`, `devops_engineer` and `qa_engineer` custom agents only when their phase is active. `ai_native_tooling_engineer` is conditional for Codex/plugin installation and configuration work. Every spawned session is a separate assessment-relevant conversation and must be inventoried and captured if used.
