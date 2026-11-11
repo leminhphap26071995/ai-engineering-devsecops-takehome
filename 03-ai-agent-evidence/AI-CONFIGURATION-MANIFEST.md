@@ -100,21 +100,25 @@ The project-local language bridge is not enabled for assessment content. It crea
 
 Repository: `leminhphap26071995/ai-engineering-devsecops-takehome`  
 Branch: `docs/initial-architecture`  
-Current branch HEAD at this record: `f418e544222ebabef0c44012f6a232190184218c`
+Branch HEAD before this manifest readback update: `b4ba7a49c46c9b6c5106f960a1cdff14af27f1e1`
 
 The following are GitHub content Git blob IDs (Git SHA-1), not local SHA-256 values. They pin the exact repository text read back from the branch. Calculate local SHA-256 values from the checked-out files on the owner's workstation and add them to the per-session record after local readback.
 
 | Path | Git blob ID |
 |---|---|
-| `AGENTS.md` | `6ec0119169d6ee16357ee09df479f640cdcbd073` |
+| `AGENTS.md` | `228ca8409fcba18ef82583d7902422bc0ddecc6d` |
 | `.codex/config.toml` | `c93329690a7d5e00e7c410c86bd3945c58d80270` |
 | `.codex/agents/security-reviewer.toml` | `87f4fedb06a5d1c6565bbf55c6e615be9925912d` |
 | `.codex/agents/devops-engineer.toml` | `732b9c9692772843151f72091ee37a56d3263ed2` |
 | `.codex/agents/qa-engineer.toml` | `2477da321ce48a0f5bc7930881f0faf97a120621` |
 | `.codex/agents/ai-native-tooling-engineer.toml` | `3330586bbebc79ec37b92401d8d30e9fde6db30f` |
 | `.agents/plugins/marketplace.json` | `73448acdd57d460e7a074ac642f3cbbf1a623f50` |
-| `.agents/skills/role-pack-provenance.json` | `0167af3839f017417b9a687e01d4504691469f13` |
-| `03-ai-agent-evidence/CODEX-CAPTURE.md` | `da3fbbb9470ba2b9a27a2b9b4632d1184484574c` |
+| `.agents/skills/role-pack-provenance.json` | `a7793703725bae73280ddf7f93b1018d9e441443` |
+| `03-ai-agent-evidence/CODEX-CAPTURE.md` | `e466f87702f0249100272edc13f11f53efa1a5cf` |
 | `03-ai-agent-evidence/session-manifest.md` | `eb94de906cd331f225674629a71155477304c309` |
+| `.codex/README.md` | `8c48b2988f96359d10faa754ca05ea8e8f0f8982` |
+| `.agents/skills/papaya-takehome/SKILL.md` | `ee074eab10aaca6be9885ced7e8e675ccc2853e9` |
+| `00-ai-engineering-workflow/ROLE-ROUTING-AND-COMMUNICATION.md` | `49a54e1f62226ad1579a0d5126e6556f38beccc7` |
+| `README.md` | `45acdc1445de69b6501dd4e9cae9c87323aa83e5` |
 
 Role artifact source blob IDs for all 20 canonical source files are recorded in `.agents/skills/role-pack-provenance.json`; local role bundle readback matched the expected source blobs for all 20 files after the documented Codex skill adapter additions to each `SKILL.md`.
