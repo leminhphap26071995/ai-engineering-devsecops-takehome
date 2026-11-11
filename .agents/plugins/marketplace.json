@@ -10,7 +10,7 @@
         "source": "git-subdir",
         "url": "https://github.com/leminhphap-improvement/ai-workflow-archtiecture.git",
         "path": "./plugin/overlay",
-        "sha": "fd981a03839566875146e9c853b52861db63396d"
+        "sha": "7b19d78bd3db8091d5ab5aa827031c60065e49bc"
       },
       "policy": {
         "installation": "AVAILABLE",

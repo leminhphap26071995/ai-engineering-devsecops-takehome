@@ -22,9 +22,9 @@ codex plugin marketplace add .
 Then, in a supported Codex desktop surface, open the Plugins Directory, select **Papaya Codex Workflow**, and install **Unified Project Workflow**. Restart/open a new Codex session in this repository.
 
 The marketplace pins the plugin source to:
-- Version: \`0.1.97\`
+- Version: \`0.1.98\`
 - Repository: \`leminhphap-improvement/ai-workflow-archtiecture\`
-- Exact source commit: \`fd981a03839566875146e9c853b52861db63396d\`
+- Exact source commit: \`7b19d78bd3db8091d5ab5aa827031c60065e49bc\`
 - Plugin path: \`plugin/overlay\`
 
 Verify that the plugin appears as installed and that the relevant skills are available. A marketplace entry, manifest or installed status does not prove a skill was invoked. Record installation/version and actual skill invocation separately in the configuration/evidence manifest.
@@ -105,10 +105,22 @@ After the probe gate passes:
 2. Keep the session focused on the Papaya assessment and this repository only.
 3. Ask Codex to inspect the current source/PR, challenge requirements, architecture and gaps before making changes.
 4. Work in coherent batches; do not create micro-commits, irrelevant tests or duplicate files.
-5. Capture every assessment-relevant Codex session, including a separately invoked subagent/fork if one is actually used.
+5. Capture every assessment-relevant Codex session, including separately invoked subagents/forks and every project-local language-bridge prepare/finalize helper session. The bridge creates separate codex exec sessions; its JSON event trace is not a native transcript.
 6. If ChatGPT or another AI is used to materially produce assessment content, inventory that assessment-relevant conversation too and preserve an acceptable export/configuration record.
 7. Record model, version, reasoning effort, approval/sandbox settings, tools/MCP/plugins/skills and the applicable AGENTS.md/configuration hashes. Never include secrets.
 8. Inspect generated work independently. Codex output is not self-validating.
+
+### 6.1 Project-local language-bridge helper sessions
+
+When scripts/language_bridge.py is used, each prepare and finalize operation starts a separate Codex exec session. These helper sessions are assessment-relevant AI conversations, even though they only normalize or translate content.
+
+For each helper invocation:
+- Record task ID, stage (prepare/finalize), timestamp, exact model, native session ID, event-trace path and the main session that invoked it.
+- Locate the corresponding native rollout under the verified CODEX_HOME using its session ID/time and isolated working directory.
+- Review the native rollout for completeness and shareability, calculate SHA-256 and add a separate row to the conversation manifest.
+- Preserve the script's JSON event trace as diagnostic metadata only; it is not a replacement for the native rollout or a user-visible complete export.
+
+If any helper session cannot be captured completely and safely, mark LANGUAGE_BRIDGE_USE=BLOCKED for the assessment. Do not run the bridge for assessment content; keep the main Codex conversation in the user's source language until HR-approved capture is available.
 
 ## 7. Final reconciliation
 

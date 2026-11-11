@@ -2,9 +2,9 @@
 
 ## Source lock
 
-The candidate repository pins Unified Project Workflow Codex plugin v0.1.97 at:
+The candidate repository pins Unified Project Workflow Codex plugin v0.1.98 at:
 - Repository: `leminhphap-improvement/ai-workflow-archtiecture`
-- Commit: `fd981a03839566875146e9c853b52861db63396d`
+- Commit: `7b19d78bd3db8091d5ab5aa827031c60065e49bc`
 - Plugin path: `plugin/overlay`
 
 The pinned package contains six complete role bundles (each with `SKILL.md`, `mindset.md`, `knowledge.md`, `workflow.md`):
@@ -48,34 +48,26 @@ Use exactly four role bundles across the challenge, loaded only when their works
 
 No engineering role is required. Use the career/interview workflow only for answer structure and clarity. The owner supplies personal facts for Q1 and Q5; AI must not invent autobiographical content.
 
-## Concise communication standard
+## Concise communication contract
 
-Target: senior-level judgment explained in language a non-specialist can understand.
+For ordinary human-facing answers:
+1. State root cause when one exists.
+2. State the solution.
+3. Add only one relevant concern:
+   - Trade-off: a material cost or limitation of the chosen option.
+   - Prevention: a control for recurrence, security or reliability risk.
+   - Improvement: a concrete future optimization that remains.
+4. Omit irrelevant categories; do not force all three.
+5. Use natural prose, no unnecessary headings/labels, no exaggerated or agentic wording, up to five sentences and a target of 20–30 whitespace-separated units. Never truncate required meaning.
+6. Preserve technical terms, identifiers, numbers, negation, conditions, evidence status and uncertainty. Full technical artifacts are exempt.
+7. Use Vietnamese when the owner writes Vietnamese; retain standard English technical terms and explain unfamiliar concepts simply.
 
-Every answer should contain only the fields that matter:
-1. **Answer/decision:** answer the question first.
-2. **Problem:** what is wrong or what risk matters?
-3. **Solution:** what should change and why?
-4. **Trade-off/improvement:** include only the material cost, limitation or next improvement.
+## Two-way language bridge
 
-Rules:
-- Keep normal replies short: one direct paragraph or a few bullets; use a compact table only when comparing options.
-- Do not write an essay, repeat the prompt, narrate internal role orchestration or dump role inventories.
-- Preserve correct technical terms. Explain a new term briefly in plain language on first use.
-- Use the user's language by default; keep product names, standards, protocol names and canonical technical terms unchanged.
-- Distinguish source fact, owner report, inference and unknown. Never compress away uncertainty.
-- Expand only when the task requires a complete technical artifact, threat model, architecture or evidence record.
+The project-local implementation is scripts/language_bridge.py. The main flow is prepare → read the validated context → execute → write the structured answer to the outbox → finalize. Python handles hashes, schemas, exact-token checks and file routing; Codex helper sessions perform semantic normalization and translation.
 
-## Context compiler contract
+Language selection is model-specific. auto uses only a VERIFIED benchmark profile for the exact model ID; without one, it keeps the source language. Do not assume English is universally optimal.
 
-The proposed Python utility is a context compiler, not a replacement for source documents or model judgment.
+The current script handles raw request text, not arbitrary source-file parsing or source retrieval. The main agent must inspect authoritative sources. Seven unit tests pass with a mocked helper; live Codex execution and transcript capture remain unverified.
 
-- Preserve original human input, employer requirements and raw agent transcripts unchanged.
-- Produce a compact, language-tagged, source-linked context envelope containing goal, requested outcome, scope/non-goals, MUST acceptance criteria, constraints, decisions, relevant evidence, unknowns and one next action.
-- Use deterministic Python for parsing, deduplication, metadata, hashes, reference extraction, retrieval and schema/token-budget validation.
-- Use the model for semantic normalization/summarization. Plain Python cannot reliably understand arbitrary languages or preserve intent by itself.
-- Every compressed requirement must retain its source reference. Never silently remove negation, numbers, dates, identifiers, thresholds, security constraints, owner decisions or conflicts.
-- Retrieve the original passage when nuance is consequential. If mandatory context exceeds budget or conflicting requirements cannot be reconciled, fail visibly; do not truncate silently.
-- Generate the answer from the validated envelope, then validate structure/length and render in the user's language while preserving technical terminology.
-- Summaries are derived working views. The original source remains authoritative.
-
+Each prepare/finalize call starts a separate Codex exec session. Its event JSONL is not a native conversation export. Do not use the bridge for Papaya assessment work until the harmless capture probe confirms every helper session can be captured completely and shared safely. Otherwise, keep the main agent in the source language.

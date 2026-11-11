@@ -60,7 +60,14 @@ The candidate now has Codex access through a ChatGPT Free account (owner-reporte
 
 ## Portable Codex workflow
 
-The repository includes a repo-local Codex marketplace at \`.agents/plugins/marketplace.json\`, which pins UPW v0.1.97 from the canonical AI Workflow Architecture repository at commit \`fd981a03839566875146e9c853b52861db63396d\`. See [Workflow Portability](docs/WORKFLOW-PORTABILITY.md) and [Codex capture guide](03-ai-agent-evidence/CODEX-CAPTURE.md).
+The repository includes a repo-local Codex marketplace at \`.agents/plugins/marketplace.json\`, which pins UPW v0.1.98 from the canonical AI Workflow Architecture repository at commit \`7b19d78bd3db8091d5ab5aa827031c60065e49bc\`. See [Workflow Portability](docs/WORKFLOW-PORTABILITY.md) and [Codex capture guide](03-ai-agent-evidence/CODEX-CAPTURE.md).
 
 UPW core separates project routing, work management, knowledge base, source control, CI/CD and evidence storage. It does not require Notion + GitHub. Jira + Confluence or other combinations can be configured later through verified adapters. This submission currently uses GitHub as its source-control host; the owner's Notion campaign is not a runtime or submission dependency. Jira/Confluence integrations are not included or verified here.
 
+
+
+## Two-way language bridge
+
+A project-local Python reference implementation is available at scripts/language_bridge.py. It normalizes raw requests into a structured context, lets the main agent write an answer to an outbox, then translates and compresses the answer into the user's language. Seven unit tests pass with a mocked Codex helper; live Codex execution is not verified.
+
+The bridge uses separate Codex helper sessions. Do not use it for assessment work until each helper's native transcript can be captured and safely shared; its event JSONL is not a transcript replacement.

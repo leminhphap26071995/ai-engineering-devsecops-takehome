@@ -9,7 +9,7 @@ The reusable UPW workflow is being brought into Codex for the assessment, but th
 - The submission repository is hosted on GitHub; GitHub is the current source-control host for this project.
 - The owner currently tracks the Papaya campaign and ticket context in a private Notion workspace. That is owner-side project management context, not a runtime dependency of this public repository.
 - The Papaya target architecture remains grounded in the employer's published brief and must not be rewritten to match candidate-side Codex tooling.
-- The canonical UPW plugin is pinned from \`leminhphap-improvement/ai-workflow-archtiecture\` at commit \`fd981a03839566875146e9c853b52861db63396d\`, version \`0.1.97\`.
+- The canonical UPW plugin is pinned from \`leminhphap-improvement/ai-workflow-archtiecture\` at commit \`7b19d78bd3db8091d5ab5aa827031c60065e49bc\`, version \`0.1.98\`.
 
 ## Provider boundaries
 
@@ -47,3 +47,10 @@ The current table describes this project only. It is not a default stack for UPW
 - This submission does not migrate the owner's private Notion data.
 - This submission does not claim all Codex clients/Free accounts expose identical plugin or connector capabilities.
 - This document does not alter Papaya's employer-defined target stack.
+
+
+## Two-way language bridge
+
+The project-local bridge is scripts/language_bridge.py. It preserves raw request text, asks read-only Codex helpers to normalize it into a structured context, then translates the main agent's outbox answer into the user's language. Python performs deterministic storage, hashes, schema and critical-token checks; the model performs semantic language conversion.
+
+The default agent language is not assumed to be English. auto uses only a VERIFIED profile for the exact model ID; otherwise it keeps the source language. Each prepare/finalize call creates a separate Codex helper session and consumes usage. Its event JSONL is diagnostic, not a native transcript export. For this assessment, do not use the bridge until all helper sessions can be captured completely and safely.

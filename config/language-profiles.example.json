@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "profiles": {},
+  "profile_contract": {
+    "benchmark_status": "VERIFIED",
+    "agent_language": "language tag",
+    "required_evidence": [
+      "exact model ID",
+      "representative task set and revision",
+      "task success rate",
+      "requirement/negation/identifier retention",
+      "median input and output tokens",
+      "median latency",
+      "translation fidelity review"
+    ]
+  }
+}

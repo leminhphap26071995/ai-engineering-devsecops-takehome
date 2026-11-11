@@ -62,9 +62,9 @@ Every employer MUST above maps to a repository artifact and direct evidence. The
 ## Codex UPW plugin and provider-neutral project routing
 
 This repository pins the reusable Unified Project Workflow (UPW) Codex plugin from the canonical architecture repository:
-- Plugin: \`unified-project-workflow\`, version \`0.1.97\`
+- Plugin: \`unified-project-workflow\`, version \`0.1.98\`
 - Source: \`leminhphap-improvement/ai-workflow-archtiecture\`
-- Source revision: \`fd981a03839566875146e9c853b52861db63396d\`
+- Source revision: \`7b19d78bd3db8091d5ab5aa827031c60065e49bc\`
 - Repo-local marketplace: \`.agents/plugins/marketplace.json\`
 - Installation guide: \`docs/WORKFLOW-PORTABILITY.md\` and \`03-ai-agent-evidence/CODEX-CAPTURE.md\`
 
@@ -85,6 +85,6 @@ Use the Codex-native plugin/skills for goal anchoring, context recovery, profess
 
 Follow [ROLE-ROUTING-AND-COMMUNICATION.md](00-ai-engineering-workflow/ROLE-ROUTING-AND-COMMUNICATION.md). Do not load or enumerate every role. Use one accountable primary role and load only the specialist bundle needed for the current work phase. A role is a method bundle, not an independently running agent.
 
-For ordinary interaction, lead with the direct answer. Include only the relevant problem, solution and material trade-off/improvement; omit headings that add no value. Use concise Vietnamese when the owner writes Vietnamese, retain precise English technical terms, and explain unfamiliar terms in plain language without weakening technical correctness. Prefer short bullets or a compact table over essays. Do not repeat context already captured in the task envelope, narrate internal orchestration, or expose hidden reasoning. Ask one question only when a consequential owner-only fact is missing.
+For ordinary interaction, answer directly in the user's language: state root cause when applicable, then solution, then only one relevant trade-off, prevention or future improvement. Trade-off means a material cost or limitation of the chosen option; prevention means a control for recurrence/security/reliability risk; improvement means a concrete future optimization. Omit irrelevant categories. Use natural prose, no unnecessary headings/labels, no inflated or agentic wording, up to five sentences and a 20–30 whitespace-unit target. Never truncate a required fact to meet the limit. Keep technical terms precise and explain unfamiliar ones simply. Full technical artifacts are exempt from the short-answer limit.
 
-Use [CONTEXT-COMPILER-DESIGN.md](00-ai-engineering-workflow/CONTEXT-COMPILER-DESIGN.md) as the proposed context-compression contract. Raw requirements remain authoritative; summaries are derived, source-linked views and must never silently drop MUST criteria, negation, numbers, dates, identifiers, security constraints or unresolved conflicts. The Python utility is a proposal, not an implemented or verified capability.
+Use [CONTEXT-COMPILER-DESIGN.md](00-ai-engineering-workflow/CONTEXT-COMPILER-DESIGN.md) as the current language-bridge contract. The project-local script at scripts/language_bridge.py now implements raw-request normalization, a structured context envelope, an agent outbox and reverse translation. It does not parse arbitrary repository documents or fetch sources; the agent must still inspect authoritative files. Seven unit tests pass with a mocked Codex helper, but live Codex execution, local authentication, helper-session capture and host activation remain NOT_VERIFIED. Do not use the bridge for assessment work until the harmless capture probe proves that every prepare/finalize helper session has a complete, shareable native transcript; otherwise keep the main agent in the source language.

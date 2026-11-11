@@ -26,11 +26,18 @@ Papaya's challenge brief requires a genuine coding-agent session and complete, r
 ## UPW Codex plugin and provider portability
 
 This repository references the canonical UPW plugin package rather than copying a second private workflow implementation into the submission:
-- Codex plugin version: \`0.1.97\`
-- Pinned canonical source commit: \`fd981a03839566875146e9c853b52861db63396d\`
+- Codex plugin version: \`0.1.98\`
+- Pinned canonical source commit: \`7b19d78bd3db8091d5ab5aa827031c60065e49bc\`
 - Repo-local marketplace: \`.agents/plugins/marketplace.json\`
-- Core contract: [Provider-Adapter Architecture](https://github.com/leminhphap-improvement/ai-workflow-archtiecture/blob/fd981a03839566875146e9c853b52861db63396d/docs/PROVIDER-ADAPTER-ARCHITECTURE.md)
+- Core contract: [Provider-Adapter Architecture](https://github.com/leminhphap-improvement/ai-workflow-archtiecture/blob/7b19d78bd3db8091d5ab5aa827031c60065e49bc/docs/PROVIDER-ADAPTER-ARCHITECTURE.md)
 
 The workflow core is vendor-neutral. Work management and knowledge base are independent from source control and CI/CD. Notion + GitHub is one possible combination; Jira + Confluence with GitHub/GitLab/other source control is another. This repository's current source-control host is GitHub, but its contents and assessment evidence must not require access to the owner's private Notion workspace.
 
 The package does not include provider MCP servers or credentials. Jira/Confluence adapters are future options, not implemented or verified in this submission. Provider connection and skill activation must be verified in the actual Codex host.
+
+
+## Project-local language bridge
+
+The reference implementation is scripts/language_bridge.py. It creates separate Codex helper sessions for prepare and finalize; inventory each helper session as a distinct assessment-relevant AI conversation. The script's JSON event traces are diagnostic only and do not replace native raw conversation exports.
+
+The bridge is not approved for assessment use until the local capture probe confirms every helper session can be exported completely and safely. If capture is blocked, continue without the bridge and answer in the source language.

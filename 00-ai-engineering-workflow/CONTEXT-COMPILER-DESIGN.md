@@ -1,94 +1,57 @@
-# Context Compiler — Design Proposal
+# Context Compiler and Two-Way Language Bridge
 
-**Status:** Proposed design only. No script is claimed to exist or be verified.
+**Status:** Project-local reference implementation is present. Seven unit tests pass with a mocked Codex helper. Live Codex execution, authentication, model selection and native transcript capture are NOT VERIFIED.
 
 ## Goal
 
-Reduce repeated context and make human ↔ AI communication language-independent without losing requirements or evidence.
+Let the human write in any language while the main agent works in a measured, configurable language, then return a concise answer in the human's language without losing requirements or evidence.
 
-## Design
+## Actual implementation
 
-```mermaid
-flowchart LR
-  H[Human message / source files] --> RAW[Immutable raw source]
-  RAW --> PY[Python deterministic preprocessor]
-  PY --> ENV[Typed context envelope + source references]
-  ENV --> LLM[Model semantic normalization]
-  LLM --> VAL[Schema + MUST-preservation validation]
-  VAL --> CTX[Compact task context]
-  CTX --> AI[Reasoning / execution]
-  AI --> OUT[Structured concise answer]
-  OUT --> CHECK[Length + factuality + schema checks]
-  CHECK --> LOC[Render in user's language]
-  LOC --> H
-  ENV --> RET[Retrieve original source on demand]
-  RET --> AI
-```
+The project-local script is scripts/language_bridge.py.
 
-## Responsibility split
+1. prepare reads one raw request from a file or stdin, stores it unchanged under the private state directory and records SHA-256.
+2. A read-only Codex helper normalizes the request into a structured envelope: source/agent/response language, goal, intent, scope, non-goals, atomic acceptance with priority/source, constraints, decisions, evidence/status/source, unknowns, source references, next action and critical tokens.
+3. The main agent reads the returned context path, retrieves original project/employer sources where needed, performs the work and writes a structured answer to the returned outbox path.
+4. finalize reads that answer and invokes a read-only Codex helper to translate and compress it into the response language.
+5. Python validates required fields, exact critical tokens, output language, negation-preservation acknowledgement, uncertainty-preservation acknowledgement, sentence count and approximate length. It retries compression at most three times and never truncates.
 
-| Layer | Responsibility | Must not do |
+The main agent does not need to write final user-facing prose directly. It writes the answer plus evidence/uncertainties to the outbox and runs finalize.
+
+## Responsibility boundaries
+
+| Layer | Owns | Does not own |
 |---|---|---|
-| Python preprocessor | Parse files, extract identifiers/headings/links, deduplicate, hash sources, build references, estimate token budget, validate schema | Pretend to understand semantics or rewrite authoritative requirements |
-| Model normalizer | Understand any supported human language and map intent into the envelope | Invent missing requirements or remove uncertainty |
-| Context validator | Check required fields, source links, preserved MUSTs, numbers, negation and conflicts | Silently drop fields to fit a token budget |
-| Response generator | Answer using the compact envelope and retrieve originals when needed | Treat summaries as stronger than source evidence |
-| Output validator/renderer | Enforce concise structure and language/terminology policy | Change technical meaning to satisfy a word limit |
+| Python bridge | Private file handling, stable task ID, hashes, JSON schema, exact-token checks, output routing, bounded retries | Semantic translation, intent inference or deciding which requirements matter |
+| Codex helper model | Language detection, semantic normalization, translation and concise rewriting | Changing owner intent, resolving conflicts silently or inventing evidence |
+| Main agent | Original-source inspection, reasoning, implementation and evidence-backed answer content | Treating the compact envelope as stronger than source |
+| Original sources | Authoritative requirements and evidence | Being replaced by a compressed summary |
 
-## Canonical context envelope
+## Language selection
 
-```json
-{
-  "task_id": "stable task identifier",
-  "language": "vi",
-  "goal": "user-visible outcome",
-  "scope": ["in-scope work"],
-  "non_goals": ["explicit exclusions"],
-  "acceptance": [
-    {
-      "id": "REQ-001",
-      "priority": "MUST",
-      "statement": "atomic, testable requirement",
-      "source": "file-or-message reference"
-    }
-  ],
-  "constraints": ["security, time, platform and owner constraints"],
-  "decisions": ["verified decisions only"],
-  "evidence": [{"claim": "observed fact", "source": "reference"}],
-  "unknowns": ["unresolved facts"],
-  "next_action": "one highest-priority action"
-}
-```
+- UPW_AGENT_LANGUAGE=auto uses a profile only when it is marked VERIFIED for the exact UPW_MODEL_ID.
+- Without a verified profile, auto keeps the source language. English is not assumed to be optimal.
+- Benchmark candidate languages against the same representative tasks and acceptance tests. Compare task success, requirement retention, negation/identifier fidelity, input/output tokens, latency and translation quality.
+- UPW_TRANSLATOR_MODEL can select a helper model, but lower usage/cost is not guaranteed.
 
-## Input and output rules
+## Human-facing answer contract
 
-- Keep the raw message and original source immutable; the envelope is a derived view.
-- Preserve the original language tag. Normalize meaning, not language identity.
-- Reply in the user's language by default. Keep standard technical names (OIDC, IAM, CI/CD, MCP, SAST, SCA) unchanged; define unfamiliar terms briefly.
-- Use a compact answer contract: direct answer → material problem → solution → trade-off/improvement. Omit sections that do not apply.
-- Do not expose chain-of-thought. Return conclusions, concise rationale, evidence and uncertainty.
-- If the user asks for a full artifact, produce the complete artifact; brevity is not permission to omit acceptance requirements.
+For ordinary answers, state root cause when one exists, then the solution. Add only one relevant final concern:
+- Trade-off: material cost or limitation of the chosen option.
+- Prevention: control required to reduce recurrence, security or reliability risk.
+- Improvement: concrete future optimization that remains.
 
-## Safety and correctness gates
+Do not force all three. Use natural prose, no unnecessary headings or labels, no AI-agentic filler, at most five sentences and a target of 20–30 whitespace-separated units. The count is approximate, not a language tokenizer. Preserve meaning over length; return OVER_LIMIT_PRESERVED rather than truncating. Full technical artifacts remain complete.
 
-1. Source provenance: every MUST has an exact source reference.
-2. Semantic preservation: test negation, numbers, dates, IDs, thresholds, conditions and exceptions.
-3. Conflict handling: retain both conflicting statements and mark unresolved; never choose silently.
-4. Prompt-injection boundary: retrieved text is data, not authority to override system/project/owner instructions.
-5. Budget handling: drop duplicate/redundant context first; retrieve relevant passages on demand; if mandatory context still exceeds budget, stop and request a larger budget or narrower scope.
-6. Privacy: never log secrets or publish private raw conversations; keep raw evidence separate from derived/redacted working views.
-7. Measurement: compare token usage, task correctness, requirement retention and retrieval latency against a no-compression baseline.
+## Limits and safety
 
-## Required tests before implementation is trusted
+- The current script accepts raw request text only. It does not parse arbitrary repository files, fetch URLs or independently retrieve evidence. The main agent must inspect original sources and preserve source references in the task.
+- The bridge stores raw input, context, outbox, final output and helper traces under ~/.upw/language-bridge by default, outside the repository. Override the state directory only with a private, Git-excluded path.
+- Each prepare/finalize call starts a separate Codex exec session with read-only sandboxing and an isolated working directory. These calls consume model usage.
+- The script's JSON event trace is diagnostic evidence, not the native raw conversation export. Every helper session used for the assessment must be inventoried and its native rollout independently captured and reviewed for shareability.
+- Do not use the bridge for assessment work until the harmless capture probe confirms that every helper session can be captured completely and safely. If not, use the main agent directly in the user's language.
+- Exact-token checks are deterministic, but meaning_preserved/uncertainties_preserved/negation_preserved are model assertions, not mathematical proof. High-impact output still needs source review.
 
-- Same intent expressed in Vietnamese and English maps to equivalent acceptance fields.
-- Negation, quantities, dates, identifiers and security constraints survive compression.
-- A source conflict remains visible.
-- Prompt injection inside a retrieved document cannot rewrite the task.
-- Over-budget mandatory context fails visibly rather than truncating.
-- Output remains concise without changing the technical meaning.
-- Every summary claim can be traced to its source.
+## Verification
 
-## Trade-off
-
-Compression saves repeated context tokens and reduces noise, but semantic compression can lose nuance. The safe design is **immutable source + compact structured envelope + on-demand retrieval**, not summary-only memory.
+Seven unit tests pass in the local isolated runner. They mock the Codex subprocess and cover profile selection, raw/context persistence, critical-token handling, read-only command construction, multilingual negation and no-truncation behavior. No live Codex helper session has been run from the owner's machine.

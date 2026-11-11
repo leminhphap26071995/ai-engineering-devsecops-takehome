@@ -39,10 +39,10 @@ This manifest records the non-secret configuration used for assessment-relevant 
 | Field | Value |
 |---|---|
 | Plugin | Unified Project Workflow |
-| Version | 0.1.97 |
+| Version | 0.1.98 |
 | Marketplace | Repo-local \`.agents/plugins/marketplace.json\` |
 | Canonical source repository | leminhphap-improvement/ai-workflow-archtiecture |
-| Pinned source commit | fd981a03839566875146e9c853b52861db63396d |
+| Pinned source commit | 7b19d78bd3db8091d5ab5aa827031c60065e49bc |
 | Plugin directory | plugin/overlay |
 | Installed in actual Codex client | PENDING local verification |
 | Relevant skill invoked in assessment session | PENDING local verification |
@@ -58,3 +58,20 @@ The owner-selected plan for Challenge 1 is to load only these pinned UPW role bu
 - `qa-engineer` — adversarial acceptance and evidence.
 
 This is a planned routing decision, not proof that these skills are installed, enabled or invoked. Record actual session-enabled roles/skills only after local Codex verification.
+
+
+## Project-local language bridge — planned, not active
+
+| Setting | Intended value | Evidence state |
+|---|---|---|
+| Agent language | auto; source language unless exact-model profile is VERIFIED | PENDING local model/profile verification |
+| User response language | Detected source language unless explicitly configured | PLANNED |
+| Translator model | Codex configured model; optional UPW_TRANSLATOR_MODEL override | PENDING |
+| Language profile | config/language-profiles.example.json; no measured profiles yet | PLANNED |
+| Private state | ~/.upw/language-bridge | PLANNED |
+| Helper execution | Separate codex exec calls, read-only sandbox, isolated work directory | Source-verified CLI flags; live invocation PENDING |
+| Helper transcript capture | Native rollout per prepare/finalize session; event JSONL is not a substitute | BLOCKING / PENDING |
+| Unit tests | 7 tests pass with mocked Codex subprocess | TOOL-OBSERVED in isolated development runner |
+| Live Codex execution | Not run on owner's machine | NOT_VERIFIED |
+
+Do not claim the bridge is active or use it for assessment content until the harmless capture probe and helper-session shareability checks pass.
