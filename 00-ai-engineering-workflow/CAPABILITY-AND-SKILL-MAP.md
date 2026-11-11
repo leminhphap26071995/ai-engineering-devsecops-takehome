@@ -11,7 +11,7 @@ This map describes capability families, not a roster of independently running ag
 | AI tooling lifecycle | Discover/configure tools and plugins | ai-tooling-lifecycle | Discovered/installed/configured/connected/invoked/verified states |
 | Cloud/DevOps | CI/CD, IaC, runtime and operations | DevOps/SRE/cloud specialist methods | Source, pipeline, runtime and operations evidence |
 | Security/privacy | Threat model, identity, permissions, data boundaries | Security, cloud-security, privacy/compliance methods | Threat scenarios, policy tests, audit evidence |
-| Coding execution | Multi-file source changes and commands | Cursor Agent; optional subagents | Native session transcript, diff and commit |
+| Coding execution | Multi-file source changes and commands | Codex local (intended; host/capture verification pending); optional subagents | Native session transcript, diff and commit |
 | Verification | Test design, adversarial checks, exact-SHA CI | QA/security review and skeptical verification | Executed output, CI logs and findings |
 
 ## Terms

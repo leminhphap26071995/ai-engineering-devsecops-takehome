@@ -8,14 +8,14 @@
 | Notion integration | CONNECTOR READ VERIFIED | Campaign brief/checkpoint and work item fetched | Entire workspace state or universal routing enforcement |
 | GitHub integration | CONNECTOR READ/WRITE AVAILABLE | New public repo, main branch and README readback | Local desktop clone state |
 | OmniRoute | SEPARATE MODEL ROUTING COMPONENT | Model/provider routing, not coding runtime | Current runtime health or every provider route |
-| Cursor Agent | SELECTED; RAW CAPTURE PENDING | Selected for this assessment | Installed version, raw session location, complete capture and subagent transcript coverage |
+| Codex local | OWNER-SELECTED; HOST/CAPTURE PENDING | Owner selected local Codex as the intended assessment coding agent | Installed client/version, plugin invocation, raw session location/shareability, complete capture and any subagent transcript coverage |
 | Papaya architecture | DESIGN PROPOSAL | Initial design baseline drafted | Papaya implementation, audit, certification or production validation |
 
 ## Limitations
 
 - This is a descriptive snapshot, partly design-level.
-- Verify Cursor local transcript capture on the installed version before substantive agent work.
-- Cursor Cloud Agents are not preferred for the raw local evidence gate.
+- Verify the local Codex client/version, UPW installation/invocation and complete shareable transcript capture before substantive agent work.
+- Cursor remains an unselected fallback only if Codex capture is unsuitable and the owner explicitly changes the choice.
 - Skills and role labels do not prove separate agents.
 - No Papaya environment access is assumed.
 - Challenge documents remain drafts pending coding-agent critique and owner review.

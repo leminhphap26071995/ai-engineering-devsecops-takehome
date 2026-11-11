@@ -25,9 +25,9 @@ Re-read authoritative employer sources before changing their interpretation. Pre
 
 ## Candidate coding-agent runtime
 
-Codex on a ChatGPT Free account is newly available to the owner. This is availability, not proof that Codex has been selected, installed, configured or used. Prefer local Codex CLI/Desktop over Codex Cloud for a Free account; current OpenAI guidance says Codex is included on Free while Codex Cloud is not included on Free. Verify the actual local client and version on the owner's machine.
+The owner has selected local Codex as the intended candidate coding-agent runtime for this assessment. Selection is an owner decision, not proof that Codex is installed, configured, invoked or used. Prefer local Codex CLI/Desktop over Codex Cloud for a Free account; current OpenAI guidance says Codex is included on Free while Codex Cloud is not included on Free. Verify the actual local client and version on the owner's machine.
 
-The Papaya target-state design remains Claude Code-aware because that is what the employer scenario specifies. The candidate's tool used to prepare the assessment may be Codex if the employer permits it. Do not rewrite the target architecture to claim Papaya uses Codex.
+The Papaya target-state design remains Claude Code-aware because that is what the employer scenario specifies. The candidate's intended tool for preparing the assessment is local Codex, subject to the employer's requirements and the capture gate. Do not rewrite the target architecture to claim Papaya uses Codex.
 
 Before substantive Codex work:
 - Read this file and the current repository state.
@@ -80,3 +80,11 @@ Use the Codex-native plugin/skills for goal anchoring, context recovery, profess
 - No Jira/Confluence adapter is implemented or verified by this submission. Do not claim it is. A future project can change the authority map and connect/test those adapters without rewriting UPW core.
 - The Papaya target architecture remains grounded in the employer's stated stack. Candidate-side Codex workflow tooling must not be confused with Papaya's target coding-agent environment.
 
+
+## Role routing and concise communication
+
+Follow [ROLE-ROUTING-AND-COMMUNICATION.md](00-ai-engineering-workflow/ROLE-ROUTING-AND-COMMUNICATION.md). Do not load or enumerate every role. Use one accountable primary role and load only the specialist bundle needed for the current work phase. A role is a method bundle, not an independently running agent.
+
+For ordinary interaction, lead with the direct answer. Include only the relevant problem, solution and material trade-off/improvement; omit headings that add no value. Use concise Vietnamese when the owner writes Vietnamese, retain precise English technical terms, and explain unfamiliar terms in plain language without weakening technical correctness. Prefer short bullets or a compact table over essays. Do not repeat context already captured in the task envelope, narrate internal orchestration, or expose hidden reasoning. Ask one question only when a consequential owner-only fact is missing.
+
+Use [CONTEXT-COMPILER-DESIGN.md](00-ai-engineering-workflow/CONTEXT-COMPILER-DESIGN.md) as the proposed context-compression contract. Raw requirements remain authoritative; summaries are derived, source-linked views and must never silently drop MUST criteria, negation, numbers, dates, identifiers, security constraints or unresolved conflicts. The Python utility is a proposal, not an implemented or verified capability.

@@ -5,7 +5,7 @@ Papaya's challenge brief requires a genuine coding-agent session and complete, r
 ## Target design versus candidate tool
 
 - The **Papaya target-state design** remains Claude Code-aware because Appendix A names Claude Code as the organization's primary coding agent.
-- The **candidate's assessment tool** may be Codex, Cursor or another permitted coding agent. The owner now has a ChatGPT Free account with Codex access; actual local client/version, selection and capture are not yet verified.
+- The **candidate's intended assessment tool** is local Codex, selected by the owner. The local client/version, plugin installation/invocation and capture are not yet verified.
 - Codex Free supports local Codex use subject to usage limits. Codex Cloud is not included with Free; use a local Codex CLI or desktop client for the planned capture.
 - Cursor's Windows capture guide remains an optional fallback. It is not evidence that Cursor is currently selected or used.
 
@@ -20,7 +20,7 @@ Papaya's challenge brief requires a genuine coding-agent session and complete, r
 - Preserve raw records byte-for-byte. Store hashes and explanatory metadata separately.
 - If a raw record contains secrets, personal data, customer/employer data or provider-internal instructions, do not publish or silently redact it. Stop and obtain an acceptable export format.
 
-**Current state:** Papaya target runtime = Claude Code (source-derived). Candidate runtime = Codex newly available (owner-reported), not yet selected/verified. Raw-session shareability and configuration capture remain blocking.
+**Current state:** Papaya target runtime = Claude Code (source-derived). Candidate runtime = local Codex (owner-selected; host setup and use not yet verified). Raw-session shareability and configuration capture remain blocking.
 
 
 ## UPW Codex plugin and provider portability

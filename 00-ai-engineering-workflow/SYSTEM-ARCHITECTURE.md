@@ -25,8 +25,8 @@ A skill is an instruction/method bundle. It does not by itself create an indepen
 
 ### 3. Model and Execution Plane
 - OmniRoute is a model/provider routing component; it is not the coding-agent runtime or a security boundary.
-- Cursor Agent is selected as the coding-agent runtime for this assessment, subject to raw-session capture verification.
-- Cursor subagents may be used only when actual invocation and transcript evidence can be preserved.
+- Local Codex is the owner-selected candidate coding-agent runtime for this assessment, subject to client/version, plugin invocation and raw-session capture verification.
+- Codex subagents/forks may be used only when actual invocation and complete transcript evidence can be preserved; otherwise keep work in one session.
 - GitHub and Notion connectors are adapters to source systems; connector availability does not prove complete provider access.
 
 ### 4. Source, CI/CD and Verification Plane
