@@ -30,9 +30,9 @@ The candidate now has Codex access through a ChatGPT Free account (owner-reporte
 | Employer source review | Challenge 1 and Appendix A read from GitHub main |
 | Challenge design | Reworked against source facts; coding-agent critique pending |
 | Multi-cloud IaC | Pulumi + Serverless default; Terraform conditional |
-| Assessment-relevant AI conversations | Inventory and acceptable exports pending |
-| Codex local raw capture | Pending harmless probe and shareability review |
-| AI configuration evidence | Non-secret manifest prepared; actual values pending |
+| Assessment-relevant AI conversations | Historical inventory and acceptable exports pending |
+| Codex local raw capture | Blocking: harmless probe and shareability review pending on owner workstation |
+| AI configuration evidence | Project Codex config, custom agents and five role bundles committed; actual host/model/settings pending local readback |
 | Logical Questions | At least five answers pending; Q1/Q5 require owner facts |
 | Secret/PII/provider-internal-instruction review | Pending |
 | Owner approval / HR submission | Pending |
