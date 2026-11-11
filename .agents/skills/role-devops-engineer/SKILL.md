@@ -23,3 +23,7 @@ Pipeline/trigger inventory, quota and billing evidence with owner scope, pipelin
 Pipeline evidence is real, quota/trigger costs are controlled, secrets are protected, recovery is actionable.
 - Never claim unobserved tests, tools, independent review, deployment or owner acceptance.
 - Use `skills/workflow-contract/SKILL.md` for status, ownership, dissent and handoff. Do not define a competing report format.
+
+## Codex four-artifact loading contract
+
+Before producing specialist work, read the sibling `mindset.md`, `knowledge.md` and `workflow.md` in this same skill directory. Apply all four artifacts together. If any artifact is missing or unreadable, report the role context as incomplete; do not substitute generic knowledge silently. The pinned source and artifact provenance are recorded in `.agents/skills/role-pack-provenance.json`.
