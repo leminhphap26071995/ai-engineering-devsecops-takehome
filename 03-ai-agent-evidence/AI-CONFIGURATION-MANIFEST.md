@@ -9,7 +9,7 @@ This manifest records the non-secret configuration used for assessment-relevant 
 | Conversation / session ID | PENDING |
 | AI product / client | PENDING |
 | Client version | PENDING |
-| Account plan / access mode | OWNER-REPORTED: ChatGPT Free; local Codex availability not yet verified |
+| Account plan / access mode | OWNER-REPORTED: ChatGPT Free; local Codex selected as intended candidate; actual local client/access not yet verified |
 | Model identifier | PENDING |
 | Reasoning effort / mode | PENDING |
 | Approval policy | PENDING |
@@ -47,3 +47,14 @@ This manifest records the non-secret configuration used for assessment-relevant 
 | Installed in actual Codex client | PENDING local verification |
 | Relevant skill invoked in assessment session | PENDING local verification |
 | Provider adapters connected | Record only the adapters actually connected and tested; none are implied by this plugin package |
+
+
+## Planned role routing — not yet active in a Codex session
+
+The owner-selected plan for Challenge 1 is to load only these pinned UPW role bundles, phase by phase:
+- `software-architect` — accountable architecture owner.
+- `security-reviewer` — threat model and agent/tool security.
+- `devops-engineer` — CI/CD, deployment and operational controls.
+- `qa-engineer` — adversarial acceptance and evidence.
+
+This is a planned routing decision, not proof that these skills are installed, enabled or invoked. Record actual session-enabled roles/skills only after local Codex verification.
