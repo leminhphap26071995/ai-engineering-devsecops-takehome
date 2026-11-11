@@ -94,3 +94,27 @@ Create one record for each materially different configuration used by an assessm
 Every assessment-relevant conversation actually used must be listed in `session-manifest.md`, including the main Codex session, every actually spawned subagent/fork, any helper session, and material ChatGPT conversations.
 
 The project-local language bridge is not enabled for assessment content. It creates separate Codex helper sessions for prepare/finalize; its JSON event trace is not a native transcript. Do not use it until every helper session can be captured completely and safely.
+
+
+## 6. Versioned configuration source readback
+
+Repository: `leminhphap26071995/ai-engineering-devsecops-takehome`  
+Branch: `docs/initial-architecture`  
+Current branch HEAD at this record: `f418e544222ebabef0c44012f6a232190184218c`
+
+The following are GitHub content Git blob IDs (Git SHA-1), not local SHA-256 values. They pin the exact repository text read back from the branch. Calculate local SHA-256 values from the checked-out files on the owner's workstation and add them to the per-session record after local readback.
+
+| Path | Git blob ID |
+|---|---|
+| `AGENTS.md` | `6ec0119169d6ee16357ee09df479f640cdcbd073` |
+| `.codex/config.toml` | `c93329690a7d5e00e7c410c86bd3945c58d80270` |
+| `.codex/agents/security-reviewer.toml` | `87f4fedb06a5d1c6565bbf55c6e615be9925912d` |
+| `.codex/agents/devops-engineer.toml` | `732b9c9692772843151f72091ee37a56d3263ed2` |
+| `.codex/agents/qa-engineer.toml` | `2477da321ce48a0f5bc7930881f0faf97a120621` |
+| `.codex/agents/ai-native-tooling-engineer.toml` | `3330586bbebc79ec37b92401d8d30e9fde6db30f` |
+| `.agents/plugins/marketplace.json` | `73448acdd57d460e7a074ac642f3cbbf1a623f50` |
+| `.agents/skills/role-pack-provenance.json` | `0167af3839f017417b9a687e01d4504691469f13` |
+| `03-ai-agent-evidence/CODEX-CAPTURE.md` | `da3fbbb9470ba2b9a27a2b9b4632d1184484574c` |
+| `03-ai-agent-evidence/session-manifest.md` | `eb94de906cd331f225674629a71155477304c309` |
+
+Role artifact source blob IDs for all 20 canonical source files are recorded in `.agents/skills/role-pack-provenance.json`; local role bundle readback matched the expected source blobs for all 20 files after the documented Codex skill adapter additions to each `SKILL.md`.
