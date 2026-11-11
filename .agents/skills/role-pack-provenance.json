@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "canonical_source": {
+    "repository": "leminhphap-improvement/ai-workflow-archtiecture",
+    "commit": "7b19d78bd3db8091d5ab5aa827031c60065e49bc",
+    "plugin": "unified-project-workflow",
+    "version": "0.1.98",
+    "path": "plugin/overlay/skills/roles"
+  },
+  "local_adaptation": "Four-artifact role bundles are mirrored under .agents/skills so Codex can discover and read them as repository skills. Each SKILL.md instructs Codex to load its sibling mindset.md, knowledge.md and workflow.md. ai-native-tooling-engineer/SKILL.md additionally has Codex skill frontmatter.",
+  "roles": {
+    "software-architect": {
+      "skill_dir": ".agents/skills/software-architect",
+      "source_skill_blob_sha": "6e1f5ac6a420cd6be19665bafc7e38ed6d8ec767",
+      "source_artifacts": [
+        "SKILL.md",
+        "mindset.md",
+        "knowledge.md",
+        "workflow.md"
+      ]
+    },
+    "security-reviewer": {
+      "skill_dir": ".agents/skills/role-security-reviewer",
+      "source_skill_blob_sha": "5bde25e8f33f075a2c8890bf676ec88cf6fe1e10",
+      "source_artifacts": [
+        "SKILL.md",
+        "mindset.md",
+        "knowledge.md",
+        "workflow.md"
+      ]
+    },
+    "devops-engineer": {
+      "skill_dir": ".agents/skills/role-devops-engineer",
+      "source_skill_blob_sha": "9423f40661009f7b8a523016170df753e343ddab",
+      "source_artifacts": [
+        "SKILL.md",
+        "mindset.md",
+        "knowledge.md",
+        "workflow.md"
+      ]
+    },
+    "qa-engineer": {
+      "skill_dir": ".agents/skills/role-qa-engineer",
+      "source_skill_blob_sha": "f51e340976e820f5cc0a08e961aca421dfdb6e8e",
+      "source_artifacts": [
+        "SKILL.md",
+        "mindset.md",
+        "knowledge.md",
+        "workflow.md"
+      ]
+    },
+    "ai-native-tooling-engineer": {
+      "skill_dir": ".agents/skills/ai-native-tooling-engineer",
+      "source_skill_blob_sha": "dd309c5ad81ed2ab95ece52ee55f71e7b254be16",
+      "source_artifacts": [
+        "SKILL.md",
+        "mindset.md",
+        "knowledge.md",
+        "workflow.md"
+      ]
+    }
+  }
+}
