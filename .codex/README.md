@@ -8,6 +8,7 @@ This repository carries a Codex-specific adapter for the reusable Unified Projec
 - `agents/*.toml`: narrow, read-only specialist subagents. They inherit the parent session's model/provider and do not configure credentials or MCP servers.
 - `../.agents/plugins/marketplace.json`: pinned UPW plugin distribution source.
 - `../.agents/skills/`: project-discoverable copies of five complete UPW role bundles. The provenance file records the exact canonical source commit and source Git blob IDs.
+- `../.agents/skills/papaya-takehome/SKILL.md`: two-assessment orchestration and capture gates.
 
 ## Effective project defaults
 
