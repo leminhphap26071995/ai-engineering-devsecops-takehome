@@ -1,77 +1,96 @@
 # AI Configuration Manifest
 
-This manifest records the non-secret configuration used for assessment-relevant AI conversations. Do not paste complete config files, credentials, API keys, cookies, auth databases or secret environment values here.
+This file records non-secret configuration for every assessment-relevant AI conversation. It separates repository-defined Codex configuration from settings actually observed in the local Codex host. Never copy auth databases, credentials, tokens, cookies, secret environment values or provider-internal instructions here.
 
-## Configuration record template
+## 1. Repository-defined Codex configuration — SOURCE VERIFIED
 
-| Field | Value |
+These are version-controlled project files. Their presence does not prove the local Codex host loaded or activated them.
+
+| Concern | Repository definition | Evidence state |
+|---|---|---|
+| Project config | `.codex/config.toml` | SOURCE_VERIFIED |
+| Approval policy | `on-request` | SOURCE_VERIFIED — project default |
+| Parent sandbox | `workspace-write` | SOURCE_VERIFIED — project default |
+| Multi-agent | enabled | SOURCE_VERIFIED |
+| Concurrent supporting threads | 3 | SOURCE_VERIFIED |
+| UPW plugin | `unified-project-workflow` enabled for `papaya-codex-workflow` | SOURCE_VERIFIED — installation still pending local verification |
+| UPW marketplace | `.agents/plugins/marketplace.json` | SOURCE_VERIFIED |
+| UPW version/source | v0.1.98, `leminhphap-improvement/ai-workflow-archtiecture@7b19d78bd3db8091d5ab5aa827031c60065e49bc`, path `plugin/overlay` | SOURCE_VERIFIED |
+| Custom agents | `security_reviewer`, `devops_engineer`, `qa_engineer`, `ai_native_tooling_engineer` under `.codex/agents/` | SOURCE_VERIFIED — read-only adapters |
+| Project-local role skills | Five complete four-artifact bundles under `.agents/skills/` | SOURCE_VERIFIED |
+| Role provenance | `.agents/skills/role-pack-provenance.json` | SOURCE_VERIFIED |
+| Model/provider | Not pinned | Intentional; record actual local selection |
+| MCP servers | None declared in project config | Does not establish whether user-level/global MCP servers exist |
+
+### Role assignment
+
+- Challenge 1 primary: `software-architect` in the main Codex thread.
+- Challenge 1 supporting roles, invoked by phase: `role-security-reviewer`, `role-devops-engineer`, `role-qa-engineer`.
+- Conditional setup role: `ai-native-tooling-engineer`.
+- Logical Questions: no engineering role; Q1/Q5 require owner-supplied facts.
+- Each actual spawned subagent is a separate assessment-relevant session and must be inventoried/captured.
+
+Canonical role source and source artifact Git blob IDs are recorded in `.agents/skills/role-pack-provenance.json`. The local role skills instruct Codex to load all four artifacts in their own directory.
+
+## 2. Local Codex host configuration — PENDING OWNER WORKSTATION READBACK
+
+| Field | Actual value |
 |---|---|
-| Conversation / session ID | PENDING |
-| AI product / client | PENDING |
-| Client version | PENDING |
-| Account plan / access mode | OWNER-REPORTED: ChatGPT Free; local Codex selected as intended candidate; actual local client/access not yet verified |
+| Client type (CLI / Desktop) | PENDING |
+| Exact client version | PENDING |
+| OS / runtime | OWNER DEVICE: Windows (reported in capture guide); exact version PENDING |
+| Account plan / access | OWNER-REPORTED: ChatGPT Free with Codex access; local authentication PENDING |
 | Model identifier | PENDING |
 | Reasoning effort / mode | PENDING |
-| Approval policy | PENDING |
-| Sandbox / execution policy | PENDING |
-| Workspace / repository | leminhphap26071995/ai-engineering-devsecops-takehome |
-| Branch and starting commit | PENDING |
-| Enabled MCP servers / plugins | PENDING |
-| Enabled skills / project instructions | Root AGENTS.md; exact hash pending after local readback |
-| Relevant non-secret config file(s) | PENDING |
-| Configuration capture timestamp (ICT) | PENDING |
-| Transcript manifest row | PENDING |
-| Secret review | PENDING |
+| Effective approval policy | PENDING host readback |
+| Effective sandbox / network policy | PENDING host readback |
+| Project trust status | PENDING |
+| UPW plugin installed/version | PENDING |
+| UPW skills discovered and invoked | PENDING |
+| Custom agents discovered | PENDING |
+| User/global MCP servers enabled | PENDING; do not assume none |
+| Capture location / CODEX_HOME | PENDING harmless probe |
+| Capture timestamp (ICT) | PENDING |
 
-## Configuration capture rules
+Do not replace PENDING values with the repository defaults. CLI flags, project trust, user configuration and managed requirements can affect the effective session settings.
 
-- Record the exact model and client version shown by the local Codex client.
-- Record reasoning, approval and sandbox settings as actually observed, not intended defaults.
-- List only MCP servers, plugins and skills actually enabled for the captured session.
-- Include the project AGENTS.md and any relevant repository-level Codex config by path and SHA-256.
-- If a global config file contains credentials or unrelated settings, do not copy it. Record only the non-secret settings needed to reproduce the session.
-- Do not claim a configuration was active merely because a file exists; confirm the session's observed settings.
-- Keep one record per materially different configuration. Do not create duplicate records for unchanged settings.
+## 3. Per-conversation configuration record
 
-
-## UPW plugin provenance
+Create one record for each materially different configuration used by an assessment-relevant conversation.
 
 | Field | Value |
 |---|---|
-| Plugin | Unified Project Workflow |
-| Version | 0.1.98 |
-| Marketplace | Repo-local \`.agents/plugins/marketplace.json\` |
-| Canonical source repository | leminhphap-improvement/ai-workflow-archtiecture |
-| Pinned source commit | 7b19d78bd3db8091d5ab5aa827031c60065e49bc |
-| Plugin directory | plugin/overlay |
-| Installed in actual Codex client | PENDING local verification |
-| Relevant skill invoked in assessment session | PENDING local verification |
-| Provider adapters connected | Record only the adapters actually connected and tested; none are implied by this plugin package |
+| Conversation / native session ID | PENDING |
+| AI product / client and exact version | PENDING |
+| Account plan / access mode | OWNER-REPORTED: ChatGPT Free; local Codex must be verified |
+| Model identifier | PENDING |
+| Reasoning effort / mode | PENDING |
+| Effective approval policy | PENDING |
+| Effective sandbox / network policy | PENDING |
+| Workspace / repository | leminhphap26071995/ai-engineering-devsecops-takehome |
+| Branch and starting commit SHA | PENDING per session |
+| Enabled plugins | Record actual installed/enabled plugins |
+| Invoked skills / roles | Record actual invocation, not merely available files |
+| Spawned custom agents | Record only agents actually spawned and their native session IDs |
+| Enabled MCP servers | Record actual host connections and scopes; never include credentials |
+| Project instruction/config files | Record exact paths and SHA-256 |
+| Capture timestamp (ICT) | PENDING |
+| Transcript manifest row | PENDING |
+| Secret/shareability review | PENDING |
 
+## 4. Configuration capture rules
 
-## Planned role routing — not yet active in a Codex session
+- Record the exact model and client version shown by the local Codex client.
+- Record effective reasoning, approval, sandbox and network settings as observed.
+- List only plugins, skills, custom agents and MCP servers actually enabled/invoked for that session.
+- Include root `AGENTS.md`, `.codex/config.toml`, the relevant custom-agent TOML files, `.agents/plugins/marketplace.json`, and any other project instructions/configuration by path and SHA-256.
+- Do not copy the user's global `~/.codex/config.toml` wholesale. Record only non-secret effective settings needed to explain the session.
+- Do not publish auth databases, provider-internal base/system/developer instructions, secrets, unrelated personal data or private employer/customer data.
+- A repository file is not proof it was loaded. A plugin marketplace entry is not proof it was installed. A skill file is not proof it was invoked. A custom-agent TOML is not proof an agent was spawned.
+- Keep one record per materially different configuration; do not duplicate unchanged records.
 
-The owner-selected plan for Challenge 1 is to load only these pinned UPW role bundles, phase by phase:
-- `software-architect` — accountable architecture owner.
-- `security-reviewer` — threat model and agent/tool security.
-- `devops-engineer` — CI/CD, deployment and operational controls.
-- `qa-engineer` — adversarial acceptance and evidence.
+## 5. Transcript and language-bridge boundaries
 
-This is a planned routing decision, not proof that these skills are installed, enabled or invoked. Record actual session-enabled roles/skills only after local Codex verification.
+Every assessment-relevant conversation actually used must be listed in `session-manifest.md`, including the main Codex session, every actually spawned subagent/fork, any helper session, and material ChatGPT conversations.
 
-
-## Project-local language bridge — planned, not active
-
-| Setting | Intended value | Evidence state |
-|---|---|---|
-| Agent language | auto; source language unless exact-model profile is VERIFIED | PENDING local model/profile verification |
-| User response language | Detected source language unless explicitly configured | PLANNED |
-| Translator model | Codex configured model; optional UPW_TRANSLATOR_MODEL override | PENDING |
-| Language profile | config/language-profiles.example.json; no measured profiles yet | PLANNED |
-| Private state | ~/.upw/language-bridge | PLANNED |
-| Helper execution | Separate codex exec calls, read-only sandbox, isolated work directory | Source-verified CLI flags; live invocation PENDING |
-| Helper transcript capture | Native rollout per prepare/finalize session; event JSONL is not a substitute | BLOCKING / PENDING |
-| Unit tests | 7 tests pass with mocked Codex subprocess | TOOL-OBSERVED in isolated development runner |
-| Live Codex execution | Not run on owner's machine | NOT_VERIFIED |
-
-Do not claim the bridge is active or use it for assessment content until the harmless capture probe and helper-session shareability checks pass.
+The project-local language bridge is not enabled for assessment content. It creates separate Codex helper sessions for prepare/finalize; its JSON event trace is not a native transcript. Do not use it until every helper session can be captured completely and safely.
