@@ -102,3 +102,8 @@ The selected four Challenge 1 role bundles are mirrored from UPW v0.1.98 at cano
 Each project-local `SKILL.md` directs Codex to read its sibling `mindset.md`, `knowledge.md` and `workflow.md`. The parent prompt should explicitly invoke the relevant skill and spawn only the supporting agent needed for the current phase. Do not load all role bundles into every prompt.
 
 Logical Questions do not use engineering roles. Q1 and Q5 remain owner-fact-only; the remaining three answers must be selected after checking the exact source question wording.
+
+
+## Task-specific Codex orchestrator
+
+The project-local skill `$papaya-takehome` is the assessment orchestrator. It preserves the two-part acceptance, owner-fact boundaries for Q1/Q5, source references, challenge-specific role order, transcript gate and one-repository submission contract. Invoke it only after the harmless Codex capture probe passes. It does not replace the UPW universal guard or any of the specialist four-artifact role bundles.
