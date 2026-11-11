@@ -25,6 +25,13 @@ Papaya's challenge brief requires a genuine coding-agent session and complete, r
 
 ## UPW Codex plugin and provider portability
 
+## Codex project configuration and specialist roles
+
+The candidate repository now includes `.codex/config.toml`, four read-only custom-agent adapters under `.codex/agents/`, and five complete four-artifact role skills under `.agents/skills/`. Their canonical UPW source is pinned at commit `7b19d78bd3db8091d5ab5aa827031c60065e49bc`; source Git blob IDs are recorded in `.agents/skills/role-pack-provenance.json`.
+
+The project config requests approval on demand, workspace-write for the parent, three concurrent supporting threads and project enablement of the pinned UPW plugin. It intentionally does not pin a model/provider or define MCP credentials. Actual local settings, plugin installation, skill discovery, custom-agent invocation and transcript capture remain PENDING until verified on the owner's Codex client. See [Codex project runtime](../.codex/README.md) and [capture/setup guide](CODEX-CAPTURE.md).
+
+
 This repository references the canonical UPW plugin package rather than copying a second private workflow implementation into the submission:
 - Codex plugin version: \`0.1.98\`
 - Pinned canonical source commit: \`7b19d78bd3db8091d5ab5aa827031c60065e49bc\`
