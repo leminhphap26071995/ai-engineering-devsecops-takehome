@@ -66,6 +66,7 @@ The repository now includes a Codex project configuration package:
 - Project defaults and UPW plugin enablement: `.codex/config.toml`
 - Read-only supporting custom agents: `.codex/agents/`
 - Five complete, project-discoverable UPW role bundles: `.agents/skills/`
+- Papaya assessment execution skill: `.agents/skills/papaya-takehome/SKILL.md`
 - Canonical role provenance: `.agents/skills/role-pack-provenance.json`
 - Setup and configuration guide: `.codex/README.md`
 
