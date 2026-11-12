@@ -1,0 +1,10 @@
+# Repository-root Codex defaults. Loaded only after the owner trusts this workspace.
+# Open the repository root as the Codex workspace.
+# Host/user/managed policy can override these defaults; this is not an authorization boundary.
+# Model/provider are intentionally not pinned; record actual runtime values per session.
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+
+[agents]
+enabled = true
+max_concurrent_threads_per_session = 2 # Two read-only specialists at once; main thread is the only writer.

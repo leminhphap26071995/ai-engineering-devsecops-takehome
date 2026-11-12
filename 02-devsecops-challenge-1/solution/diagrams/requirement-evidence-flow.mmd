@@ -1,0 +1,10 @@
+flowchart LR
+  SRC[Employer Source / HR Clarification] --> REQ[Requirement ID]
+  REQ --> DEC[Design Decision / ADR]
+  DEC --> CTRL[Policy and Enforcement Point]
+  CTRL --> TEST[Positive / Negative / Bypass Test]
+  TEST --> EVID[Observed Result and Evidence]
+  EVID --> OWNER[Accountable Owner / Reviewer]
+  SESSION[Actual AI Session] --> RAW[Complete Raw Export]
+  RAW --> HASH[SHA-256 and Manifest]
+  HASH --> EVID

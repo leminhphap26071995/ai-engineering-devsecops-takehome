@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "scope": "Papaya DevSecOps take-home role-pack inventory",
+  "policy": "All role packs are self-contained and Papaya-specific. This manifest records the local role-pack inventory and adaptation status.",
+  "roles": {
+    "project-manager": {
+      "path": ".agents/skills/project-manager",
+      "status": "PAPAYA_TASK_AUTHORED",
+      "artifacts": [
+        "SKILL.md",
+        "mindset.md",
+        "knowledge.md",
+        "workflow.md"
+      ]
+    },
+    "technical-lead": {
+      "path": ".agents/skills/technical-lead",
+      "status": "PAPAYA_TASK_AUTHORED",
+      "artifacts": [
+        "SKILL.md",
+        "mindset.md",
+        "knowledge.md",
+        "workflow.md"
+      ]
+    },
+    "devsecops-engineer": {
+      "path": ".agents/skills/devsecops-engineer",
+      "status": "PAPAYA_TASK_AUTHORED",
+      "artifacts": [
+        "SKILL.md",
+        "mindset.md",
+        "knowledge.md",
+        "workflow.md"
+      ]
+    },
+    "ai-agent-security-engineer": {
+      "path": ".agents/skills/ai-agent-security-engineer",
+      "status": "PAPAYA_TASK_AUTHORED",
+      "artifacts": [
+        "SKILL.md",
+        "mindset.md",
+        "knowledge.md",
+        "workflow.md"
+      ]
+    },
+    "ai-native-engineer": {
+      "path": ".agents/skills/ai-native-engineer",
+      "status": "PAPAYA_TASK_AUTHORED",
+      "artifacts": [
+        "SKILL.md",
+        "mindset.md",
+        "knowledge.md",
+        "workflow.md"
+      ]
+    },
+    "role-devops-engineer": {
+      "path": ".agents/skills/role-devops-engineer",
+      "status": "PAPAYA_ADAPTED",
+      "artifacts": [
+        "SKILL.md",
+        "mindset.md",
+        "knowledge.md",
+        "workflow.md"
+      ]
+    },
+    "security-assurance-engineer": {
+      "path": ".agents/skills/security-assurance-engineer",
+      "status": "PAPAYA_TASK_AUTHORED",
+      "artifacts": [
+        "SKILL.md",
+        "mindset.md",
+        "knowledge.md",
+        "workflow.md"
+      ]
+    },
+    "role-qa-engineer": {
+      "path": ".agents/skills/role-qa-engineer",
+      "status": "PAPAYA_ADAPTED",
+      "artifacts": [
+        "SKILL.md",
+        "mindset.md",
+        "knowledge.md",
+        "workflow.md"
+      ]
+    }
+  }
+}

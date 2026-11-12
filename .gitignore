@@ -1,0 +1,9 @@
+# Candidate-only working state: never include in the assessment submission
+/02-devsecops-challenge-1/ai/WORK-STATE.local.md
+/.papaya-local/
+
+# Local editor/OS artifacts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

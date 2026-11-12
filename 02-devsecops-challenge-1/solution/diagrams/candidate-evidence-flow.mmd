@@ -1,0 +1,12 @@
+flowchart TD
+  H[Candidate / Human Owner] --> G[Employer Requirements]
+  G --> P[Assessment PM and Technical Lead]
+  P --> D[DevSecOps Design and Specialist Reviews]
+  D --> C[Technical Assessment Documents]
+  D --> A[Actual Coding-Agent Sessions]
+  A --> R[Complete Raw Session Exports]
+  C --> V[Requirement and Repository Verification]
+  R --> V
+  V --> O[Owner Review and Acceptance]
+  O --> S[One Repository URL Submitted by Owner]
+  PAPAYA[Papaya Systems] -. no access / no implementation claim .-> D

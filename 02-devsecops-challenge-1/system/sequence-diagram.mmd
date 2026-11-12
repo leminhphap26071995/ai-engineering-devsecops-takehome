@@ -1,0 +1,40 @@
+sequenceDiagram
+    autonumber
+    actor Engineer
+    participant Host as Available coding-agent host
+    participant State as Task state / source lock
+    participant Primary as DevSecOps primary
+    participant Sec as AI Agent Security
+    participant AI as AI Native
+    participant Ops as DevOps
+    participant QA as QA
+    participant SCM as GitHub / CI
+    participant Human as Named human approver
+    participant Runtime as Production runtime / operations
+
+    Engineer->>Host: Open trusted workspace and select available host
+    Host->>State: Recover goal, requirements, SHA and first unmet gate
+    State-->>Host: Scope, evidence, constraints and acceptance
+    Host->>Host: Verify effective tools, permissions and session capture
+    Host->>Primary: Load primary four-artifact role pack
+    Primary->>Primary: Discover system, baseline, threats and failure domains
+    par Independent security review when needed
+        Host->>Sec: Bounded agent/tool/identity threat review
+        Sec-->>Primary: Attack paths, enforcement and negative tests
+    and
+        Host->>AI: Bounded production AI/data-flow review
+        AI-->>Primary: Workload lifecycle, tenancy and evaluation risks
+    end
+    Host->>Ops: Assign delivery/performance/HA-DR review when needed
+    Ops-->>Primary: Pipeline, identity, capacity and recovery evidence
+    Primary->>Host: Options, trade-offs and bounded implementation plan
+    Host->>Host: Scoped code/config/test changes
+    Host->>QA: Acceptance challenge
+    QA-->>Host: Functional/security/performance/resilience oracles
+    Host->>SCM: Push branch / open PR
+    SCM->>SCM: Run untrusted validation and required checks
+    SCM->>Human: Present exact diff, checks, artifact/plan and target
+    Human->>SCM: Approve named production change
+    SCM->>Runtime: Protected deploy with short-lived identity
+    Runtime-->>Host: Health, audit, performance and recovery evidence
+    Host->>State: Persist exact revision, results, unknowns and next action
